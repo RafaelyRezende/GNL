@@ -6,25 +6,28 @@
 /*   By: rluis-ya <rluis-ya@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 21:22:08 by rluis-ya          #+#    #+#             */
-/*   Updated: 2025/05/07 21:31:26 by rluis-ya         ###   ########.fr       */
+/*   Updated: 2025/05/11 15:43:40 by rluis-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
-#include <unistd.h>
 
+char	*get_next_line(int fd)
+{
+	char	buffer[]
+}
 int main()
 {
-	int	fd;
 	char	buffer[256];
-	int	reads;
+	int	bytes_read;
+	int	fd;
 
-	fd = open("test.txt", O_RDONLY | O_CREAT);
+	fd = open("test.text", O_RDONLY);
 
-	while((reads = read(fd, buffer, 5)))
+	while((bytes_read = read(fd, buffer, 10)))
 	{
-		buffer[reads] = '\0';
-		printf("buffer --> %s\n", buffer);
+		buffer[bytes_read] = '\0';
+		printf("%s", buffer);
 	}
 }
