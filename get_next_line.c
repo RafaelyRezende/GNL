@@ -34,7 +34,7 @@ char	*get_next_line(int fd)
 		if (buffer[offset] == '\0')
 		{
 			printf("Found null");
-			break;
+			return (NULL);
 		}
 		offset++;
 		bytes_read--;
@@ -47,6 +47,7 @@ char	*get_next_line(int fd)
 		ptr_buffer[cp_len] = buffer[cp_len];
 		cp_len++;
 	}
+	ptr_buffer[cp_len] = '\n';
 	return (ptr_buffer);
 }
 
@@ -68,13 +69,15 @@ int main(int argc, char **argv)
 		return (1);
 	}
 	printf("FD of file %s: %d\n\n", argv[1], fd);
-	while(flag)
+	while(1)
 	{
 		res = get_next_line(fd);
 		if (!res)
 			break;
 		printf("OUT --> %s\n", res);
-		scanf("OPTION (zero to exit): %i", &flag);
+		scanf("OPTION (zero to exit): %d", &flag);
+		if (flag == 0)
+			break;
 	}
 	printf("Exiting...");
 	return (0);
