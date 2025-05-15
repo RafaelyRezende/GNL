@@ -13,12 +13,12 @@
 # ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# define BUFFER_SIZE 255
+# define BUFFER_SIZE 42
 
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
 
 char	*get_next_line(int fd);
-
+char	*ft_buffdup(char *src, char *dest, int size);
 #endif

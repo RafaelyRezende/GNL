@@ -16,41 +16,30 @@
 char	*get_next_line(int fd)
 {
 	static char	buffer[BUFFER_SIZE + 1];
-	char	*ptr_buffer;
-	int	bytes_read;
-	size_t cp_len;
-	size_t offset;
-	
-	offset = 0;
-	cp_len = 0;
-	bytes_read = read(fd, buffer, BUFFER_SIZE + 1);
-	while(bytes_read > 0)
-	{
-		if (buffer[offset] == '\n' )
-		{
-			printf("Found next line\n");
-			break;
-		}
-		if (buffer[offset] == '\0')
-		{
-			printf("Found null");
-			return (NULL);
-		}
-		offset++;
-		bytes_read--;
-	}
-	ptr_buffer = (char *) malloc(sizeof(char) * (offset + 1));
-	if (!ptr_buffer)
-		return (0);
-	while(cp_len < offset)
-	{
-		ptr_buffer[cp_len] = buffer[cp_len];
-		cp_len++;
-	}
-	ptr_buffer[cp_len] = '\n';
-	return (ptr_buffer);
-}
+	char		*line;
+	int			bytes_read;
+	int			i;
 
+	if (fd < 0)
+		return (NULL);
+	bytes_read = read(fd, buffer, BUFFER_SIZE);
+	i = 0;
+	while(buffer[i] != '\n')
+	{
+		if (bytes_read == 0 || buffer[i])
+		{
+			line = ft_buffdup(buffer, i);
+			bytes_read = read(fd, buffer, BUFFER_SIZE);
+		}
+		else
+		{
+			i++;
+			bytes_read--;
+		}
+	}
+	return (NULL);
+}
+/*
 int main(int argc, char **argv)
 {
 	int	fd;
@@ -82,3 +71,4 @@ int main(int argc, char **argv)
 	printf("Exiting...");
 	return (0);
 }
+*/
