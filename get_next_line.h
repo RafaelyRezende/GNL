@@ -20,5 +20,5 @@
 # include <stdlib.h>
 
 char	*get_next_line(int fd);
-char	*ft_buffdup(char *src, char *dest, int size);
+int		ft_is_nl(char buffer[]);
 #endif

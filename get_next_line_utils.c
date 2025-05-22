@@ -12,21 +12,22 @@
 
 #include "get_next_line.h"
 
-char	*ft_buffdup(char *src, int size)
+int	ft_is_nl(char buffer[])
 {
-	char	*ptr;
-
-	ptr = (char *) malloc(sizeof(char) * (size + 1));
-	if (!ptr)
-		return (NULL);
-	if (*src == '\0' && size < 0)
-		return (NULL);
-	while (*src)
+	int	i;
+	 // Return: a positive number (position of new line) if buffer has a nl or zero
+	 // Param: copy of the contents of the buffer
+	i = 0;
+	while (buffer[i])
 	{
-		*ptr = *src;
-		ptr++;
-		src++;
+		if (buffer[i] == '\n')
+			return (i);
+		i++;
 	}
-	*ptr = '\0';
-	return (ptr);
-}	
+	return (0);
+}
+
+void	ft_search_destroy(char buffer[], char *line, int bytes2nl)
+{
+	
+}
