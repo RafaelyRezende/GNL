@@ -37,36 +37,3 @@ char	*get_next_line(int fd)
 	}
 	return (line);
 }
-/*
-int main(int argc, char **argv)
-{
-	int	fd;
-	int	flag;
-	char	*res;
-
-	flag = 1;
-	fd = -1;
-	if (argc != 2)
-		return(1);
-
-	fd = open(argv[1], O_RDONLY);
-	if (fd < 0)
-	{
-		printf("Error openning the file");
-		return (1);
-	}
-	printf("FD of file %s: %d\n\n", argv[1], fd);
-	while(1)
-	{
-		res = get_next_line(fd);
-		if (!res)
-			break;
-		printf("OUT --> %s\n", res);
-		scanf("OPTION (zero to exit): %d", &flag);
-		if (flag == 0)
-			break;
-	}
-	printf("Exiting...");
-	return (0);
-}
-*/

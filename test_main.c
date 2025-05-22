@@ -13,29 +13,17 @@
 #include "get_next_line.h"
 #include <stdio.h>
 
-int	main(int argc, char **argv)
+int	main(void)
 {
-	int		fd;
-	int		flag;
-	char	*res;
+  char  str[] = "this has a newline\n";
+  char  str2[] = "this does not have a newline.";
+  int i;
+  int j;
 
-	flag = 1;
-	fd = -1;
-	if (argc != 2)
-		return (1);
-	fd = open(argv[1], O_RDONLY);
-	if (fd < 0)
-	{
-		printf("Error openning the file");
-		return (1);
-	}
-	printf("FD of file %s: %d\n\n\n", argv[1], fd);
-	while (1)
-	{
-		res = get_next_line(fd);
-		if (!res)
-			break ;
-	}
-	printf("\nExiting...");
-	return (0);
+  i = ft_is_nl(str);
+  j = ft_is_nl(str2);
+  printf("STRING : %d\n", i);
+  printf("STRING2 : %d\n", j);
+
+  return (0);
 }

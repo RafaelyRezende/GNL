@@ -21,13 +21,14 @@ int	ft_is_nl(char buffer[])
 	while (buffer[i])
 	{
 		if (buffer[i] == '\n')
-			return (i);
+			return (++i);
 		i++;
 	}
 	return (0);
 }
-
+/*
 void	ft_search_destroy(char buffer[], char *line, int bytes2nl)
 {
 	
 }
+*/
