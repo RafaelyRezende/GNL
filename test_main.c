@@ -15,15 +15,17 @@
 
 int	main(void)
 {
-  char  str[] = "this has a newline\n";
-  char  str2[] = "this does not have a newline.";
-  int i;
-  int j;
+	char  str[] = "this has a newline\n\0";
+	char  str2[] = "this does not have a newline.\0";
+	int i;
+	int j;
+	//char	*new_string;
 
-  i = ft_is_nl(str);
-  j = ft_is_nl(str2);
-  printf("STRING : %d\n", i);
-  printf("STRING2 : %d\n", j);
+	i = ft_is_nl(str);
+	j = ft_is_nl(str2);
+	printf("STRING : %d\n", i);
+	printf("STRING2 : %d\n", j);
 
-  return (0);
+	printf("CONCAT : %s", ft_strconcat(&str[0], &str2[0]));
+	return (0);
 }

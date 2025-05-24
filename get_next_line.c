@@ -18,20 +18,20 @@ char	*get_next_line(int fd)
 	static char	buffer[BUFFER_SIZE + 1];
 	char		*line;
 	int			bytes_read;
+	int			is_nl;
 
-	if (fd < 0 || BUFFER_SIZE < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	line = malloc(1);
-	if (!line)
-		return (NULL);
-	*line = '\0';
+	line = NULL;
 	bytes_read = 1;
+	is_nl = FALSE;
 	while (bytes_read)
 	{
-		bytes_read = read(fd, buffer, BUFFER_SIZE); // Copy to buffer and return the amount of bytes read
+		if (!buffer[0])
+			bytes_read = read(fd, buffer, BUFFER_SIZE); // Copy to buffer and return the amount of bytes read
 		if (ft_is_nl(buffer)) // Check if the buffer has a new line
 		{
-			ft_search_destroy(buffer, line, ft_is_nl(buffer));
+			ft_offset(buffer, line);
 			break;
 		}
 	}

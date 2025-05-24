@@ -18,7 +18,10 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
+# define TRUE 1
+# define FALSE 0
 
 char	*get_next_line(int fd);
 int		ft_is_nl(char buffer[]);
+char	*ft_offset(char *str1, char *str2);
 #endif
