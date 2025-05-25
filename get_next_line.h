@@ -13,7 +13,9 @@
 # ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
+# ifndef BUFFER_SIZE
 # define BUFFER_SIZE 42
+# endif
 
 # include <fcntl.h>
 # include <unistd.h>
@@ -23,5 +25,6 @@
 
 char	*get_next_line(int fd);
 int		ft_is_nl(char buffer[]);
-char	*ft_offset(char *str1, char *str2);
+void	ft_offset(char *buffer);
+char	*ft_strconcat(char *str1, char *str2);
 #endif

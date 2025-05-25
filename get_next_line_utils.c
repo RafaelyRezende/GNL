@@ -32,7 +32,11 @@ int	ft_strlen(char *str)
 
 	i = 0;
 	while (str[i])
+	{
 		i++;
+		if (str[i] == '\n')
+			break ;
+	}
 	return (i);
 }
 
@@ -47,47 +51,38 @@ char	*ft_strconcat(char *str1, char *str2)
 		return (NULL);
 	i = 0;
 	j = 0;
-	while (str1[i])
-	{
-		str_cated[i] = str1[i];
-		i++;
-	}
-	while (str2[j])
+	while (str1[i++])
+		str_cated[i - 1] = str1[i - 1];
+	i = 0;
+	while (str2[j] && str2[j] == '\n')
 	{
 		str_cated[i + j] = str2[j];
+		j++;
+	}
+	if (str2[j] == '\n')
+	{
+		str_cated[i + j] = '\n';
 		j++;
 	}
 	str_cated[i + j] = '\0';
 	return (str_cated);
 }
 
-int	ft_offset(char *buffer, char *line)
+void	ft_offset(char *buffer)
 {
-	char *ba_line;
 	int	i;
 	int	j;
+	int	flag;
 
 	i = 0;
 	j = 0;
-	while (
+	flag = 0;
+	while (buffer[i])
+	{
+		if (buffer[i] == '\n')
+			flag++;
+		i++;
+		if (flag)
+			buffer[j++] = buffer[i];
+	}
 }
-/*
-int	main(void)
-{
-	char  str[] = "this has a newline\n\0";
-	char  str2[] = "this does not have a newline.\0";
-	int i;
-	int j;
-	char	*new_string;
-
-	i = ft_is_nl(str);
-	j = ft_is_nl(str2);
-	printf("STRING : %d\n", i);
-	printf("STRING2 : %d\n", j);
-
-	new_string = ft_strconcat(&str[0], &str2[0]);
-	printf("CONCAT : %s", new_string);
-	free(new_string);
-	return (0);
-}
-*/

@@ -13,27 +13,39 @@
 #include "get_next_line.h"
 #include <stdio.h>
 
+char	*ft_create_line(void)
+{
+	char	*str;
+
+	str = (char *) malloc(sizeof(char));
+	if (!str)
+		return (FALSE);
+	return (str);
+}
+// "oi\nola"
+
 char	*get_next_line(int fd)
 {
 	static char	buffer[BUFFER_SIZE + 1];
 	char		*line;
 	int			bytes_read;
-	int			is_nl;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	line = NULL;
+	line = ft_create_line();
+	if (!line)
+		return (NULL);
 	bytes_read = 1;
-	is_nl = FALSE;
-	while (bytes_read)
+	while (bytes_read && !ft_is_nl(buffer))
 	{
 		if (!buffer[0])
-			bytes_read = read(fd, buffer, BUFFER_SIZE); // Copy to buffer and return the amount of bytes read
-		if (ft_is_nl(buffer)) // Check if the buffer has a new line
-		{
-			ft_offset(buffer, line);
-			break;
-		}
+			bytes_read = read(fd, buffer, BUFFER_SIZE); // Copy to buffer and return the amount of bytes rea
+		if (bytes_read == -1)
+			return (free(line), NULL);
+		if (bytes_read == 0)
+			break ;
+		line = ft_strconcat(line, buffer);
 	}
+	ft_offset(buffer);
 	return (line);
 }
