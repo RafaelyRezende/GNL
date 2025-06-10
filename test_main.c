@@ -11,12 +11,36 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "stdio.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	int i;
+	int	fd;
+	int	flag;
+	char	*res;
 
-	i = 550;
-	get_next_line(i);
+	if (argc != 2)
+		return (1);
+/*	
+	while (true)
+	{
+		fd = open(argv[1], O_RDONLY);
+		if ((res = get_next_line(fd)) == NULL)
+			break ;
+		printf("%s\n", res);
+	}
+	return (0);
+	*/
+	flag = 0;
+	while (true)
+	{
+		printf("Option: ");
+		scanf("%d", &flag);
+		if (!flag)
+			break ;
+		fd = open(argv[1], O_RDONLY);
+		res = get_next_line(fd);
+		printf("%s\n", res);
+	}
 	return (0);
 }

@@ -39,7 +39,7 @@ char	*get_next_line(int fd)
 	while (bytes_read && !ft_is_nl(buffer))
 	{
 		if (!buffer[0])
-			bytes_read = read(fd, buffer, BUFFER_SIZE); // Copy to buffer and return the amount of bytes rea
+			bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read == -1)
 			return (free(line), NULL);
 		if (bytes_read == 0)
