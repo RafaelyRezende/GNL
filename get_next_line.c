@@ -6,7 +6,7 @@
 /*   By: rluis-ya <rluis-ya@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 21:22:08 by rluis-ya          #+#    #+#             */
-/*   Updated: 2025/06/13 12:51:07 by rluis-ya         ###   ########.fr       */
+/*   Updated: 2025/06/13 18:31:37 by jcesar-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ char	*get_next_line(int fd)
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read == -1 || (bytes_read == 0 && !*line))
 			return (free(line), NULL);
-		line = ft_strjoin(line, buffer);
+		if (bytes_read != 0)
+			line = ft_strjoin(line, buffer);
 		if (!line)
 			return (free(line),NULL);
 	}

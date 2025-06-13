@@ -6,7 +6,7 @@
 /*   By: rluis-ya <rluis-ya@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 10:27:44 by rluis-ya          #+#    #+#             */
-/*   Updated: 2025/06/13 16:13:06 by rluis-ya         ###   ########.fr       */
+/*   Updated: 2025/06/13 18:21:22 by jcesar-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	ft_offset(char *buff)
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	unsigned int	len;
+	int	len;
 	char		*ptr;
 	int		i;
 	int		j;
@@ -90,7 +90,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		ptr[i] = s1[i];
 		i++;
 	}
-	while (s2[j])
+	while (s2[j] && (j + i) < len)
 	{
 		ptr[i + j] = s2[j];
 		j++;
