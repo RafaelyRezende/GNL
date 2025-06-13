@@ -6,7 +6,7 @@
 /*   By: rluis-ya <rluis-ya@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 10:32:19 by rluis-ya          #+#    #+#             */
-/*   Updated: 2025/06/13 12:33:55 by rluis-ya         ###   ########.fr       */
+/*   Updated: 2025/06/13 16:12:21 by rluis-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	ft_unit_test(void)
 {
 //char	file_test[] = "full_file.txt";
-	char	file_test_2[] = "line_test.txt";
+	char	file_test_2[] = "no_nl.txt";
 	int	fd;
 	char	*tmp;
 

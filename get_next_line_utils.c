@@ -6,7 +6,7 @@
 /*   By: rluis-ya <rluis-ya@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 10:27:44 by rluis-ya          #+#    #+#             */
-/*   Updated: 2025/06/13 15:33:50 by rluis-ya         ###   ########.fr       */
+/*   Updated: 2025/06/13 16:13:06 by rluis-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	ft_strlen(const char *line)
 
 	i = 0;
 	while (line[i] && line[i] != '\n')
+		i++;
+	if (line[i] == '\n')
 		i++;
 	return (i);
 }
@@ -73,6 +75,7 @@ void	ft_offset(char *buff)
 char	*ft_strjoin(char *s1, char *s2)
 {
 	unsigned int	len;
+	char		*ptr;
 	int		i;
 	int		j;
 
@@ -82,11 +85,12 @@ char	*ft_strjoin(char *s1, char *s2)
 	ptr = (char *)malloc(sizeof(char) * len);
 	if (!ptr)
 		return (free(s1),NULL);
-	while (s1[i]) {
+	while (s1[i]) 
+	{
 		ptr[i] = s1[i];
 		i++;
 	}
-	while (s2[j] && (j != 0 && s2[j - 1] != '\n'))
+	while (s2[j])
 	{
 		ptr[i + j] = s2[j];
 		j++;
