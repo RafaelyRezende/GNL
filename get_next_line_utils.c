@@ -6,7 +6,7 @@
 /*   By: rluis-ya <rluis-ya@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 10:27:44 by rluis-ya          #+#    #+#             */
-/*   Updated: 2025/06/13 12:55:43 by rluis-ya         ###   ########.fr       */
+/*   Updated: 2025/06/13 15:33:50 by rluis-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_strlen(const char *line)
 	i = 0;
 	while (line[i] && line[i] != '\n')
 		i++;
-	return (++i);
+	return (i);
 }
 
 int	ft_init(char **line, int *bytes_read)
