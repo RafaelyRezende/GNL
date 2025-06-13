@@ -6,83 +6,92 @@
 /*   By: rluis-ya <rluis-ya@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 10:27:44 by rluis-ya          #+#    #+#             */
-/*   Updated: 2025/05/14 10:30:37 by rluis-ya         ###   ########.fr       */
+/*   Updated: 2025/06/13 12:55:43 by rluis-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
 
-int	ft_is_nl(char *buffer)
+int	ft_is_nl(char *buff)
 {
 	int	i;
+
 	i = 0;
-	while (buffer[i])
+	while (buff[i])
 	{
-		if (buffer[i] == '\n')
+		if (buff[i] == '\n')
 			return (++i);
 		i++;
 	}
 	return (0);
 }
 
-int	ft_strlen(char *str)
+int	ft_strlen(const char *line)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
-	{
+	while (line[i] && line[i] != '\n')
 		i++;
-		if (str[i] == '\n')
-			break ;
-	}
-	return (i);
+	return (++i);
 }
 
-char	*ft_strconcat(char *str1, char *str2)
+int	ft_init(char **line, int *bytes_read)
 {
-	char	*str_cated;
-	int		i;
-	int		j;
-
-	str_cated = malloc(sizeof(char) * (ft_strlen(str1) + ft_strlen(str2) + 1));
-	if (!str_cated)
-		return (NULL);
-	i = 0;
-	j = 0;
-	while (str1[i++])
-		str_cated[i - 1] = str1[i - 1];
-	i = 0;
-	while (str2[j] && str2[j] == '\n')
-	{
-		str_cated[i + j] = str2[j];
-		j++;
-	}
-	if (str2[j] == '\n')
-	{
-		str_cated[i + j] = '\n';
-		j++;
-	}
-	str_cated[i + j] = '\0';
-	return (str_cated);
+	*line = malloc(1);
+	if (!line)
+		return (0);
+	**line = '\0';
+	*bytes_read = 1;
+	return (1);
 }
 
-void	ft_offset(char *buffer)
+void	ft_offset(char *buff)
 {
 	int	i;
 	int	j;
 	int	flag;
 
+	flag = 0;
 	i = 0;
 	j = 0;
-	flag = 0;
-	while (buffer[i])
+
+	while (buff[i])
 	{
-		if (buffer[i] == '\n')
+		if (buff[i] == '\n')
 			flag++;
-		i++;
 		if (flag)
-			buffer[j++] = buffer[i];
+		{
+			buff[j] = buff[i + 1];
+			j++;
+		}
+		i++;
 	}
+}
+
+char	*ft_strjoin(char *s1, char *s2)
+{
+	unsigned int	len;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	len = ft_strlen(s2) + ft_strlen(s1) + 1;
+	ptr = (char *)malloc(sizeof(char) * len);
+	if (!ptr)
+		return (free(s1),NULL);
+	while (s1[i]) {
+		ptr[i] = s1[i];
+		i++;
+	}
+	while (s2[j] && (j != 0 && s2[j - 1] != '\n'))
+	{
+		ptr[i + j] = s2[j];
+		j++;
+	}
+	ptr[i + j] = '\0';
+	free(s1);
+	return (ptr);
 }

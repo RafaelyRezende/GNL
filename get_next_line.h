@@ -6,7 +6,7 @@
 /*   By: rluis-ya <rluis-ya@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 13:56:13 by rluis-ya          #+#    #+#             */
-/*   Updated: 2025/05/11 14:43:48 by rluis-ya         ###   ########.fr       */
+/*   Updated: 2025/06/13 12:56:16 by rluis-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,12 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
-# define TRUE 1
-# define FALSE 0
 
+int	ft_is_nl(char *buff);
 char	*get_next_line(int fd);
-int		ft_is_nl(char buffer[]);
-void	ft_offset(char *buffer);
-char	*ft_strconcat(char *str1, char *str2);
+int	ft_strlen(const char *line)
+void	ft_offset(char *buff);
+int	ft_init(char **line, int *bytes_read);
+char	*ft_strjoin(char *s1, char *s2);
+
 #endif
