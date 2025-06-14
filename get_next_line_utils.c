@@ -70,6 +70,7 @@ void	ft_offset(char *buff)
 		}
 		i++;
 	}
+	buff[j] = '\0';
 }
 
 char	*ft_strjoin(char *s1, char *s2)
